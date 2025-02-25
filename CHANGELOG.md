@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2025-02-25
+
+### Changed
+- Improved .gitignore file
+  - Consolidated and removed redundant patterns
+  - Enhanced environment file exclusions while preserving sample files
+  - Better organized structure with clear categorization
+  - Added comprehensive coverage for build artifacts and dependencies
+
 ## [1.1.0] - 2024-01-09
 
 ### Added
@@ -36,4 +45,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Improved quick start guide with authentication setup steps
 
 [1.1.0]: https://github.com/ksstormnet/r2-bucket-browser/releases/tag/v1.1.0
+[1.2.0]: https://github.com/ksstormnet/r2-bucket-browser/releases/tag/v1.2.0
+
 
