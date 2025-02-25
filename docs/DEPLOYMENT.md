@@ -16,7 +16,7 @@ Before you begin, ensure you have:
 ## Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/r2-bucket-browser.git
+git clone https://github.com/ksstormnet/r2-bucket-browser.git
 cd r2-bucket-browser
 ```
 
