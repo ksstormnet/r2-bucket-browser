@@ -73,8 +73,13 @@ async function verifyGoogleToken(token, env) {
     
     // Check the domain
     const email = decodedPayload.email;
-    if (!email || !email.endsWith(`@${env.AUTH_DOMAIN}`)) {
-      throw new Error('Email domain not authorized');
+    if (!email) {
+      throw new Error('Email not provided in token');
+    }
+    
+    const emailDomain = email.split('@')[1];
+    if (emailDomain !== env.AUTH_DOMAIN) {
+      throw new Error(`Authentication restricted to @${env.AUTH_DOMAIN} domain. Found: @${emailDomain}`);
     }
     
     // Verify email is verified
@@ -216,10 +221,9 @@ async function handleCallback(request, env) {
     // Verify ID token and extract user info
     const userData = await verifyGoogleToken(tokenData.id_token, env);
     
-    // Verify domain
-    if (!userData.email.endsWith(`@${env.AUTH_DOMAIN}`)) {
-      return errorResponse(`Access restricted to ${env.AUTH_DOMAIN} domain`, 403, headers);
-    }
+    // Domain verification is already done in verifyGoogleToken
+    // This block is redundant and can be removed since domain 
+    // validation errors will be caught in the catch block below
     
     // Generate session token
     const sessionToken = await generateSessionToken(userData, env);
@@ -238,7 +242,14 @@ async function handleCallback(request, env) {
     
   } catch (error) {
     console.error('Authentication error:', error);
-    return errorResponse('Authentication failed: ' + error.message, 401, headers);
+    
+    // Determine the appropriate status code based on the error
+    let status = 401;
+    if (error.message.includes('restricted to @')) {
+      status = 403; // Forbidden for domain mismatch
+    }
+    
+    return errorResponse('Authentication failed: ' + error.message, status, headers);
   }
 }
 

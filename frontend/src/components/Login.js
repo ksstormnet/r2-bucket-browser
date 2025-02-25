@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+const AUTH_DOMAIN = process.env.REACT_APP_AUTH_DOMAIN;
+
 const Login = ({ onLoginSuccess }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -95,7 +97,7 @@ const Login = ({ onLoginSuccess }) => {
             
             <div className="text-center mt-4">
               <p className="text-sm text-gray-600">
-                Only authorized domain accounts allowed.
+                Only <span className="font-medium">@{AUTH_DOMAIN}</span> accounts are allowed to sign in
               </p>
             </div>
           </div>

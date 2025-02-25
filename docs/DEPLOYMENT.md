@@ -77,7 +77,41 @@ cd r2-bucket-browser
    - Click "Create"
    - Note down the Client ID and Client Secret
 
-4. **Enable Google People API**:
+4. **Configure Authorization Domain**:
+   - The application restricts access to users from specific email domains
+   - Set up the authorization domain in both worker and frontend environments:
+
+   a) **Worker Environment**:
+      ```bash
+      # In worker/.env
+      AUTH_DOMAIN=yourdomain.com
+      ```
+      For development:
+      ```bash
+      # In worker/.env.development
+      AUTH_DOMAIN=yourdomain.com
+      ```
+
+   b) **Frontend Environment**:
+      ```bash
+      # In frontend/.env.production
+      REACT_APP_AUTH_DOMAIN=yourdomain.com
+      ```
+      For development:
+      ```bash
+      # In frontend/.env.development
+      REACT_APP_AUTH_DOMAIN=yourdomain.com
+      ```
+
+   Important notes:
+   - The AUTH_DOMAIN value in the worker and REACT_APP_AUTH_DOMAIN in the frontend must match exactly
+   - This domain should be the email domain of your organization (e.g., if users log in with @company.com emails, use "company.com")
+   - For development, you might use a different domain than production, but ensure it matches between worker and frontend
+   - Example:
+     * Development: "dev-company.com" (for testing with @dev-company.com emails)
+     * Production: "company.com" (for actual users with @company.com emails)
+
+5. **Enable Google People API**:
    - Go to "APIs & Services" > "Library"
    - Search for "Google People API"
    - Select it and click "Enable"
