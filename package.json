@@ -1,0 +1,24 @@
+{
+  "name": "r2-bucket-browser",
+  "version": "1.0.0",
+  "description": "A beautiful visual interface for browsing and managing files stored in Cloudflare R2 buckets",
+  "main": "index.js",
+  "scripts": {
+    "setup": "npm run setup:worker && npm run setup:frontend",
+    "setup:worker": "cd worker && npm install",
+    "setup:frontend": "cd frontend && npm install",
+    "deploy": "npm run deploy:worker && npm run deploy:frontend",
+    "deploy:worker": "cd worker && npx wrangler deploy",
+    "deploy:frontend": "cd frontend && npm run build && npx wrangler pages deploy build/"
+  },
+  "keywords": [
+    "cloudflare",
+    "r2",
+    "bucket",
+    "browser",
+    "ghost",
+    "blog"
+  ],
+  "author": "",
+  "license": "MIT"
+}

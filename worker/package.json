@@ -1,0 +1,16 @@
+{
+  "name": "r2-browser-api",
+  "version": "1.0.0",
+  "description": "Backend API for R2 Bucket Browser",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "jest"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^29.0.0",
+    "wrangler": "^3.0.0"
+  }
+}

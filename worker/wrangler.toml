@@ -1,0 +1,32 @@
+name = "r2-browser-api"
+main = "src/index.js"
+compatibility_date = "2023-12-01"
+
+account_id = "your-account-id" # Replace with your Cloudflare account ID
+
+# R2 Bucket Binding
+[[r2_buckets]]
+binding = "MY_BUCKET"
+bucket_name = "ghost-blog-assets" # Replace with your bucket name
+
+# KV Namespaces for authentication
+[[kv_namespaces]]
+binding = "AUTH_SESSIONS"
+id = "auth_sessions_kv_id" # Create this in Cloudflare dashboard and replace the ID
+
+[[kv_namespaces]]
+binding = "AUTH_STATES"
+id = "auth_states_kv_id" # Create this in Cloudflare dashboard and replace the ID
+
+# Environment variables
+[vars]
+# API settings
+API_TOKEN_SECRET = "your-secure-random-string" # Still keep this as a fallback
+ALLOWED_ORIGINS = "https://your-frontend-domain.com,http://localhost:3000" # Add your domains
+PUBLIC_BUCKET_DOMAIN = "assets.yourdomain.com" # Replace with your public bucket domain
+
+# Google OAuth settings
+GOOGLE_CLIENT_ID = "your-google-client-id" # From Google Cloud Console
+REDIRECT_URI = "https://r2-browser-api.yourusername.workers.dev/api/auth/callback" # Replace with your worker domain
+FRONTEND_URL = "https://your-frontend-domain.com" # Where to redirect after auth
+AUTH_DOMAIN = "ksstorm.info" # Domain to restrict access to
