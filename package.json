@@ -1,6 +1,6 @@
 {
   "name": "r2-bucket-browser",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "A beautiful visual interface for browsing and managing files stored in Cloudflare R2 buckets",
   "main": "index.js",
   "scripts": {

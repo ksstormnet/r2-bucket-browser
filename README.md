@@ -60,7 +60,18 @@ r2-bucket-browser/
 3. Deploy the worker and frontend
 4. Set up your authentication domain in both worker and frontend environments
 5. Configure your other authentication settings
-6. Start managing your R2 bucket with a beautiful interface!
+6. Set up public access to your R2 bucket:
+   - Create and deploy a public access worker
+   - Configure DNS for your public access URL
+   - Set up CORS settings for public bucket access
+7. Start managing your R2 bucket with the browser interface:
+   - Upload, organize, and manage files and folders
+   - Use the image processing features for resizing and optimization
+   - Access public links to your assets
+8. Integrate with your Ghost blog:
+   - Add image upload integration to your Ghost site
+   - Configure Ghost to use your R2 bucket for media storage
+   - Add the R2 Browser to your Ghost navigation
 
 ## 🔒 Security Features
 
